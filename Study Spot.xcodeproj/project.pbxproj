@@ -10,6 +10,7 @@
 		D1041664AA7AF1232CFC9931 /* Pods_Study_Spot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08ED7430CD1113DE68C6ECE1 /* Pods_Study_Spot.framework */; };
 		DC432D6721B0838E0053F610 /* OfferingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC432D6621B0838E0053F610 /* OfferingsCell.swift */; };
 		DC432D6921B0841B0053F610 /* Offerings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC432D6821B0841B0053F610 /* Offerings.swift */; };
+		DC432D6D21B08F9B0053F610 /* ReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC432D6C21B08F9B0053F610 /* ReviewsCell.swift */; };
 		DC6A795621AE3E880024CD65 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A795521AE3E880024CD65 /* DetailViewController.swift */; };
 		DC6A795921AE472D0024CD65 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A795821AE472D0024CD65 /* CustomSlider.swift */; };
 		DC6C3D6221A38F2500889A55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6C3D6121A38F2500889A55 /* AppDelegate.swift */; };
@@ -25,6 +26,7 @@
 		8DDEAD784019A3AA8AC3E7DE /* Pods-Study Spot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Study Spot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Study Spot/Pods-Study Spot.debug.xcconfig"; sourceTree = "<group>"; };
 		DC432D6621B0838E0053F610 /* OfferingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferingsCell.swift; sourceTree = "<group>"; };
 		DC432D6821B0841B0053F610 /* Offerings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offerings.swift; sourceTree = "<group>"; };
+		DC432D6C21B08F9B0053F610 /* ReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsCell.swift; sourceTree = "<group>"; };
 		DC6A795521AE3E880024CD65 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DC6A795821AE472D0024CD65 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		DC6C3D5E21A38F2500889A55 /* Study Spot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Study Spot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +83,7 @@
 				DC6A795821AE472D0024CD65 /* CustomSlider.swift */,
 				DC6C3D7321A391AE00889A55 /* ListViewCell.swift */,
 				DC432D6621B0838E0053F610 /* OfferingsCell.swift */,
+				DC432D6C21B08F9B0053F610 /* ReviewsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC6C3D7421A391AE00889A55 /* ListViewCell.swift in Sources */,
+				DC432D6D21B08F9B0053F610 /* ReviewsCell.swift in Sources */,
 				DC432D6721B0838E0053F610 /* OfferingsCell.swift in Sources */,
 				DC6A795921AE472D0024CD65 /* CustomSlider.swift in Sources */,
 				DC6C3D6421A38F2500889A55 /* ListViewController.swift in Sources */,

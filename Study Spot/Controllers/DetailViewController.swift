@@ -8,17 +8,13 @@
 
 import UIKit
 import DGCollectionViewLeftAlignFlowLayout
+import Cosmos
 
-class DetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class DetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var flowlayout: DGCollectionViewLeftAlignFlowLayout!
-    @IBOutlet weak var collectionView: UICollectionView!
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
-    }
-    
+    let offeringsCell = "offeringsCell"
+    let reviewsCell = "reviewsCell"
+
     let offerings = [
         Offering(image: "wifi-solid", name: "Free WiFi"),
         Offering(image: "plug-solid", name: "Power Outlets"),
@@ -26,30 +22,73 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         Offering(image: "lightbulb-solid", name: "Well Lit")
     ]
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "offeringsCell", for: indexPath) as! OfferingsCell
-        let offering = offerings[indexPath.row]
-        
-        cell.imageView.image = UIImage(named: offering.image)
-        cell.label.text = offering.name
-        
-        print(offering.name)
-        return cell
+    @IBOutlet weak var offeringsCollectionView: UICollectionView!
+    @IBOutlet weak var offeringsCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var flowlayout: DGCollectionViewLeftAlignFlowLayout!
+
+    @IBOutlet weak var reviewsCollectionView: UICollectionView!
+    @IBOutlet weak var reviewsCollectionViewHeight: NSLayoutConstraint!
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch collectionView {
+        case self.offeringsCollectionView:
+            return offerings.count
+        case self.reviewsCollectionView:
+            return 2
+        default:
+            return 0
+        }
     }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch collectionView {
+        case self.offeringsCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: offeringsCell, for: indexPath) as! OfferingsCell
+            let offering = offerings[indexPath.row]
+            cell.imageView.image = UIImage(named: offering.image)
+            cell.label.text = offering.name
+            return cell
+        case self.reviewsCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reviewsCell, for: indexPath) as! ReviewsCell
+            return cell
+        default:
+            fatalError("bad cell")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == self.reviewsCollectionView {
+            let height = calculateHeightForCell(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare quam sed nibh fermentum gravida a vel turpis. Sed sit amet lacus quis lorem commodo feugiat vitae sit amet lacus. Nulla vel orci viverra, pellentesque turpis non, viverra tellus. Suspendisse potenti. Ut sit amet consequat mi. Vestibulum porta velit vel lobortis malesuada. In consectetur purus nisi, in bibendum quam ullamcorper nec. Phasellus accumsan, orci id consectetur ultrices, erat mi lobortis tortor, in dapibus erat dolor eget velit. Fusce sagittis magna lectus. Nullam interdum dolor turpis, ut consequat dolor aliquet nec.", width: collectionView.frame.width)
+            return CGSize(width: collectionView.frame.width, height: height)
+        }
+        return (collectionViewLayout as! UICollectionViewFlowLayout).itemSize
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        collectionView.backgroundColor = .black
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        offeringsCollectionView.delegate = self
+        offeringsCollectionView.dataSource = self
         flowlayout.itemSize = CGSize(width: 100, height: 25)
         flowlayout.estimatedItemSize = CGSize(width: 100, height: 25)
         flowlayout.minimumInteritemSpacing = 24
         flowlayout.minimumLineSpacing = 16
         
-        collectionViewHeight.constant = collectionView.collectionViewLayout.collectionViewContentSize.height
+        reviewsCollectionView.delegate = self
+        reviewsCollectionView.dataSource = self
+//        reviewsCollectionView.backgroundColor = .green
+        
+        offeringsCollectionViewHeight.constant = offeringsCollectionView.collectionViewLayout.collectionViewContentSize.height
+        reviewsCollectionViewHeight.constant = reviewsCollectionView.collectionViewLayout.collectionViewContentSize.height
         view.setNeedsLayout()
+    }
+    
+    func calculateHeightForCell(text:String, width: CGFloat) -> CGFloat {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 4
+        label.font = UIFont(name: "Futura", size: 17)
+        label.text = text
+        label.sizeToFit()
+        return label.frame.height + 40 + CosmosView().frame.height + 16
     }
     
     
