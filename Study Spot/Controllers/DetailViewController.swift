@@ -19,12 +19,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         return 4
     }
     
-    struct Offering {
-        var image: String
-        var name: String
-    }
-    
-    let list = [
+    let offerings = [
         Offering(image: "wifi-solid", name: "Free WiFi"),
         Offering(image: "plug-solid", name: "Power Outlets"),
         Offering(image: "pencil-alt-solid", name: "Big Workspace"),
@@ -33,7 +28,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "offeringsCell", for: indexPath) as! OfferingsCell
-        let offering = list[indexPath.row]
+        let offering = offerings[indexPath.row]
         
         cell.imageView.image = UIImage(named: offering.image)
         cell.label.text = offering.name
@@ -68,35 +63,4 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     */
 
-}
-
-class OfferingsCell : UICollectionViewCell {
-    
-    let imageView: UIImageView = {
-        let imageView = UIImageView()
-//        imageView.backgroundColor = .green
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    let label: UILabel = {
-        let label = UILabel()
-//        label.backgroundColor = .blue
-        label.font = UIFont(name: "Futura", size: 17)
-        label.textColor = UIColor(white: 0.45, alpha: 1)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    override func awakeFromNib() {
-        contentView.addSubview(imageView)
-        contentView.addSubview(label)
-        
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[image(25@999)]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["image": imageView]))
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[label]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["label": label]))
-        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[image(25)]-12-[label]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["image": imageView, "label": label]))
-        
-    }
-    
 }

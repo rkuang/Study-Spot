@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D1041664AA7AF1232CFC9931 /* Pods_Study_Spot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08ED7430CD1113DE68C6ECE1 /* Pods_Study_Spot.framework */; };
+		DC432D6721B0838E0053F610 /* OfferingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC432D6621B0838E0053F610 /* OfferingsCell.swift */; };
+		DC432D6921B0841B0053F610 /* Offerings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC432D6821B0841B0053F610 /* Offerings.swift */; };
 		DC6A795621AE3E880024CD65 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A795521AE3E880024CD65 /* DetailViewController.swift */; };
 		DC6A795921AE472D0024CD65 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A795821AE472D0024CD65 /* CustomSlider.swift */; };
 		DC6C3D6221A38F2500889A55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6C3D6121A38F2500889A55 /* AppDelegate.swift */; };
@@ -15,12 +17,14 @@
 		DC6C3D6721A38F2500889A55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC6C3D6521A38F2500889A55 /* Main.storyboard */; };
 		DC6C3D6921A38F2600889A55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC6C3D6821A38F2600889A55 /* Assets.xcassets */; };
 		DC6C3D6C21A38F2600889A55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC6C3D6A21A38F2600889A55 /* LaunchScreen.storyboard */; };
-		DC6C3D7421A391AE00889A55 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6C3D7321A391AE00889A55 /* TableViewCell.swift */; };
+		DC6C3D7421A391AE00889A55 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6C3D7321A391AE00889A55 /* ListViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		08ED7430CD1113DE68C6ECE1 /* Pods_Study_Spot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Study_Spot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DDEAD784019A3AA8AC3E7DE /* Pods-Study Spot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Study Spot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Study Spot/Pods-Study Spot.debug.xcconfig"; sourceTree = "<group>"; };
+		DC432D6621B0838E0053F610 /* OfferingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferingsCell.swift; sourceTree = "<group>"; };
+		DC432D6821B0841B0053F610 /* Offerings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offerings.swift; sourceTree = "<group>"; };
 		DC6A795521AE3E880024CD65 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DC6A795821AE472D0024CD65 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		DC6C3D5E21A38F2500889A55 /* Study Spot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Study Spot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,7 +34,7 @@
 		DC6C3D6821A38F2600889A55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC6C3D6B21A38F2600889A55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC6C3D6D21A38F2600889A55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DC6C3D7321A391AE00889A55 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		DC6C3D7321A391AE00889A55 /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		F5D0F08389EABB234CB9FC53 /* Pods-Study Spot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Study Spot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Study Spot/Pods-Study Spot.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +67,33 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DC432D6321B082F40053F610 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DC432D6821B0841B0053F610 /* Offerings.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DC432D6421B083020053F610 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DC6A795821AE472D0024CD65 /* CustomSlider.swift */,
+				DC6C3D7321A391AE00889A55 /* ListViewCell.swift */,
+				DC432D6621B0838E0053F610 /* OfferingsCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DC432D6521B083160053F610 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DC6C3D6321A38F2500889A55 /* ListViewController.swift */,
+				DC6A795521AE3E880024CD65 /* DetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		DC6C3D5521A38F2500889A55 = {
 			isa = PBXGroup;
 			children = (
@@ -84,15 +115,14 @@
 		DC6C3D6021A38F2500889A55 /* Study Spot */ = {
 			isa = PBXGroup;
 			children = (
+				DC432D6321B082F40053F610 /* Models */,
+				DC432D6421B083020053F610 /* Views */,
+				DC432D6521B083160053F610 /* Controllers */,
 				DC6C3D6121A38F2500889A55 /* AppDelegate.swift */,
-				DC6A795821AE472D0024CD65 /* CustomSlider.swift */,
-				DC6C3D6321A38F2500889A55 /* ListViewController.swift */,
-				DC6C3D7321A391AE00889A55 /* TableViewCell.swift */,
 				DC6C3D6521A38F2500889A55 /* Main.storyboard */,
 				DC6C3D6821A38F2600889A55 /* Assets.xcassets */,
 				DC6C3D6A21A38F2600889A55 /* LaunchScreen.storyboard */,
 				DC6C3D6D21A38F2600889A55 /* Info.plist */,
-				DC6A795521AE3E880024CD65 /* DetailViewController.swift */,
 			);
 			path = "Study Spot";
 			sourceTree = "<group>";
@@ -211,9 +241,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC6C3D7421A391AE00889A55 /* TableViewCell.swift in Sources */,
+				DC6C3D7421A391AE00889A55 /* ListViewCell.swift in Sources */,
+				DC432D6721B0838E0053F610 /* OfferingsCell.swift in Sources */,
 				DC6A795921AE472D0024CD65 /* CustomSlider.swift in Sources */,
 				DC6C3D6421A38F2500889A55 /* ListViewController.swift in Sources */,
+				DC432D6921B0841B0053F610 /* Offerings.swift in Sources */,
 				DC6C3D6221A38F2500889A55 /* AppDelegate.swift in Sources */,
 				DC6A795621AE3E880024CD65 /* DetailViewController.swift in Sources */,
 			);
