@@ -34,7 +34,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         case self.offeringsCollectionView:
             return offerings.count
         case self.reviewsCollectionView:
-            return 2
+            return 3
         default:
             return 0
         }
@@ -58,7 +58,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.reviewsCollectionView {
-            let height = calculateHeightForCell(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare quam sed nibh fermentum gravida a vel turpis. Sed sit amet lacus quis lorem commodo feugiat vitae sit amet lacus. Nulla vel orci viverra, pellentesque turpis non, viverra tellus. Suspendisse potenti. Ut sit amet consequat mi. Vestibulum porta velit vel lobortis malesuada. In consectetur purus nisi, in bibendum quam ullamcorper nec. Phasellus accumsan, orci id consectetur ultrices, erat mi lobortis tortor, in dapibus erat dolor eget velit. Fusce sagittis magna lectus. Nullam interdum dolor turpis, ut consequat dolor aliquet nec.", width: collectionView.frame.width)
+            let height = calculateHeightForCell(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare quam sed nibh fermentum gravida a vel turpis.", width: collectionView.frame.width)
             return CGSize(width: collectionView.frame.width, height: height)
         }
         return (collectionViewLayout as! UICollectionViewFlowLayout).itemSize
@@ -75,7 +75,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         reviewsCollectionView.delegate = self
         reviewsCollectionView.dataSource = self
-//        reviewsCollectionView.backgroundColor = .green
+        (reviewsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).minimumLineSpacing = 16
         
         offeringsCollectionViewHeight.constant = offeringsCollectionView.collectionViewLayout.collectionViewContentSize.height
         reviewsCollectionViewHeight.constant = reviewsCollectionView.collectionViewLayout.collectionViewContentSize.height
@@ -88,7 +88,10 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         label.font = UIFont(name: "Futura", size: 17)
         label.text = text
         label.sizeToFit()
-        return label.frame.height + 40 + CosmosView().frame.height + 16
+        
+        let dimens: [String: CGFloat] = ["avatar": 40, "stars": 20, "padding": 24]
+        
+        return label.frame.height + dimens["avatar"]! + dimens["stars"]! + dimens["padding"]!
     }
     
     

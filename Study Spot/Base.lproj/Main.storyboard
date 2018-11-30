@@ -160,7 +160,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1136"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IE6-tn-tz6" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1071"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1070.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="ngW-dQ-6v7">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
@@ -169,19 +169,19 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gB0-MN-Esi" userLabel="Title">
-                                                <rect key="frame" x="24" y="268" width="327" height="63"/>
+                                                <rect key="frame" x="24" y="268" width="327" height="70"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Study Spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEC-sn-lIQ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="148" height="39"/>
-                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="176" height="39"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="30"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyF-wa-m9J" customClass="CosmosView" customModule="Cosmos">
-                                                        <rect key="frame" x="0.0" y="47" width="135" height="16"/>
+                                                        <rect key="frame" x="0.0" y="47" width="135" height="23"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="16" id="I2K-TB-lSu"/>
+                                                            <constraint firstAttribute="height" constant="23" id="I2K-TB-lSu"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
@@ -200,21 +200,24 @@
                                                                 <real key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                                <real key="value" value="3"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Environment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9W-Td-Pzt">
-                                                <rect key="frame" x="24" y="359" width="111" height="26"/>
-                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                                <rect key="frame" x="24" y="366" width="120.5" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="18"/>
                                                 <color key="textColor" white="0.29999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="qFA-n2-rlE">
-                                                <rect key="frame" x="32" y="401" width="319" height="122"/>
+                                                <rect key="frame" x="24" y="405.5" width="327" height="122"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="oDA-uJ-o2L">
-                                                        <rect key="frame" x="0.0" y="0.0" width="319" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="volume-solid" translatesAutoresizingMaskIntoConstraints="NO" id="vSq-74-ng4">
                                                                 <rect key="frame" x="0.0" y="2.5" width="25" height="25"/>
@@ -235,7 +238,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="JgD-kS-oNp" customClass="CustomSlider" customModule="Study_Spot" customModuleProvider="target">
-                                                                <rect key="frame" x="118" y="0.0" width="203" height="31"/>
+                                                                <rect key="frame" x="118" y="0.0" width="211" height="31"/>
                                                                 <color key="tintColor" red="0.45738974514565728" green="0.38148002565980549" blue="0.6731459330143541" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -244,7 +247,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AbP-cb-EIJ">
-                                                        <rect key="frame" x="0.0" y="46" width="319" height="30"/>
+                                                        <rect key="frame" x="0.0" y="46" width="327" height="30"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="running-solid" translatesAutoresizingMaskIntoConstraints="NO" id="I9G-L2-gYM">
                                                                 <rect key="frame" x="0.0" y="2.5" width="25" height="25"/>
@@ -265,7 +268,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Cv1-M5-crc" customClass="CustomSlider" customModule="Study_Spot" customModuleProvider="target">
-                                                                <rect key="frame" x="118" y="0.0" width="203" height="31"/>
+                                                                <rect key="frame" x="118" y="0.0" width="211" height="31"/>
                                                                 <color key="tintColor" red="0.45738974510000002" green="0.3814800257" blue="0.67314593300000003" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -274,7 +277,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="X81-67-3oT">
-                                                        <rect key="frame" x="0.0" y="92" width="319" height="30"/>
+                                                        <rect key="frame" x="0.0" y="92" width="327" height="30"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="umbrella-beach-solid" translatesAutoresizingMaskIntoConstraints="NO" id="ZHM-pX-mXJ">
                                                                 <rect key="frame" x="0.0" y="2.5" width="25" height="25"/>
@@ -295,7 +298,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7Ov-aV-hsZ" customClass="CustomSlider" customModule="Study_Spot" customModuleProvider="target">
-                                                                <rect key="frame" x="118" y="0.0" width="203" height="31"/>
+                                                                <rect key="frame" x="118" y="0.0" width="211" height="31"/>
                                                                 <color key="tintColor" red="0.45738974510000002" green="0.3814800257" blue="0.67314593300000003" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -316,13 +319,13 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other Offerings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DlP-KQ-lBK">
-                                                <rect key="frame" x="24" y="551" width="145.5" height="26"/>
-                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                                <rect key="frame" x="24" y="555.5" width="153" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="18"/>
                                                 <color key="textColor" white="0.29999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="y61-z6-slJ">
-                                                <rect key="frame" x="32" y="593" width="319" height="80"/>
+                                                <rect key="frame" x="24" y="595" width="327" height="80"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="3Rk-AU-RL9"/>
@@ -340,13 +343,13 @@
                                                 </cells>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pph-Dw-ccY">
-                                                <rect key="frame" x="24" y="701" width="351" height="26"/>
-                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                                <rect key="frame" x="24" y="703" width="351" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="18"/>
                                                 <color key="textColor" white="0.29999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="u3p-wX-bzr">
-                                                <rect key="frame" x="32" y="751" width="319" height="240"/>
+                                                <rect key="frame" x="24" y="750.5" width="327" height="240"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="240" id="C5k-qE-ddH"/>
@@ -378,19 +381,19 @@
                                             <constraint firstAttribute="trailing" secondItem="Pph-Dw-ccY" secondAttribute="trailing" id="C5Y-Cj-5O4"/>
                                             <constraint firstItem="y61-z6-slJ" firstAttribute="top" secondItem="DlP-KQ-lBK" secondAttribute="bottom" constant="16" id="Cfr-L2-Ta1"/>
                                             <constraint firstItem="Pph-Dw-ccY" firstAttribute="leading" secondItem="IE6-tn-tz6" secondAttribute="leading" constant="24" id="GF8-Ee-y8g"/>
+                                            <constraint firstItem="u3p-wX-bzr" firstAttribute="leading" secondItem="IE6-tn-tz6" secondAttribute="leading" constant="24" id="HHF-j5-V2h"/>
                                             <constraint firstItem="U9W-Td-Pzt" firstAttribute="leading" secondItem="gB0-MN-Esi" secondAttribute="leading" id="INB-0S-Tjs"/>
                                             <constraint firstAttribute="trailing" secondItem="qFA-n2-rlE" secondAttribute="trailing" constant="24" id="IvC-gT-7rJ"/>
                                             <constraint firstAttribute="bottom" secondItem="u3p-wX-bzr" secondAttribute="bottom" constant="80" id="Lln-Fo-r6l"/>
+                                            <constraint firstItem="y61-z6-slJ" firstAttribute="leading" secondItem="IE6-tn-tz6" secondAttribute="leading" constant="24" id="M1V-Lt-ljR"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DlP-KQ-lBK" secondAttribute="trailing" id="NAC-DQ-44r"/>
                                             <constraint firstAttribute="trailing" secondItem="u3p-wX-bzr" secondAttribute="trailing" constant="24" id="Sbu-NG-IKB"/>
-                                            <constraint firstItem="qFA-n2-rlE" firstAttribute="leading" secondItem="U9W-Td-Pzt" secondAttribute="leading" constant="8" id="WQV-RJ-QX9"/>
+                                            <constraint firstItem="qFA-n2-rlE" firstAttribute="leading" secondItem="U9W-Td-Pzt" secondAttribute="leading" id="WQV-RJ-QX9"/>
                                             <constraint firstAttribute="trailing" secondItem="y61-z6-slJ" secondAttribute="trailing" constant="24" id="Zva-Bl-oey"/>
                                             <constraint firstItem="DlP-KQ-lBK" firstAttribute="leading" secondItem="IE6-tn-tz6" secondAttribute="leading" constant="24" id="gxx-oX-cYD"/>
                                             <constraint firstItem="ngW-dQ-6v7" firstAttribute="top" secondItem="IE6-tn-tz6" secondAttribute="top" id="hUd-kP-9WE"/>
-                                            <constraint firstItem="y61-z6-slJ" firstAttribute="leading" secondItem="qFA-n2-rlE" secondAttribute="leading" id="irt-J4-Qgr"/>
                                             <constraint firstItem="gB0-MN-Esi" firstAttribute="top" secondItem="ngW-dQ-6v7" secondAttribute="bottom" constant="28" id="jTL-3z-hnD"/>
                                             <constraint firstItem="Pph-Dw-ccY" firstAttribute="top" secondItem="y61-z6-slJ" secondAttribute="bottom" constant="28" id="jco-DR-stx"/>
-                                            <constraint firstItem="u3p-wX-bzr" firstAttribute="leading" secondItem="y61-z6-slJ" secondAttribute="leading" id="k7E-Su-50X"/>
                                             <constraint firstItem="ngW-dQ-6v7" firstAttribute="leading" secondItem="IE6-tn-tz6" secondAttribute="leading" id="krd-aJ-lVA"/>
                                             <constraint firstAttribute="trailing" secondItem="ngW-dQ-6v7" secondAttribute="trailing" id="lvQ-v5-m1U"/>
                                             <constraint firstItem="U9W-Td-Pzt" firstAttribute="top" secondItem="gB0-MN-Esi" secondAttribute="bottom" constant="28" id="phH-1V-RhI"/>
