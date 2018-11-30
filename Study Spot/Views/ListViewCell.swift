@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import Cosmos
 
 class ListViewCell: UITableViewCell {
+    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var rating: CosmosView!
+    @IBOutlet weak var num_reviews: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,8 +23,14 @@ class ListViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        print("selected")
         // Configure the view for the selected state
+    }
+    
+    func populate(spot: StudySpot) {
+        self.name.text = spot.name
+        self.rating.rating = spot.rating
+        self.num_reviews.text = "\(spot.num_reviews) Reviews"
     }
 
 }

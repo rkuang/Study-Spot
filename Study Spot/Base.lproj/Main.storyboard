@@ -129,6 +129,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="name" destination="fhb-c6-Y4B" id="9hf-HA-GCP"/>
+                                    <outlet property="num_reviews" destination="g6U-bY-V0p" id="KlJ-th-0Zb"/>
+                                    <outlet property="rating" destination="Hcu-vK-pJ8" id="bNs-MO-yTR"/>
                                     <segue destination="YHv-LF-SoD" kind="show" id="pXv-nH-1zd"/>
                                 </connections>
                             </tableViewCell>
@@ -162,7 +165,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IE6-tn-tz6" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1070.5"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="ngW-dQ-6v7">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="ngW-dQ-6v7">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="240" id="AMo-bw-FaJ"/>
@@ -408,6 +411,9 @@
                                     <constraint firstAttribute="trailing" secondItem="IE6-tn-tz6" secondAttribute="trailing" id="JeB-dY-5gP"/>
                                     <constraint firstItem="IE6-tn-tz6" firstAttribute="top" secondItem="xmE-pc-jrv" secondAttribute="top" id="uWA-MG-VDQ"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="YHv-LF-SoD" id="A0f-J7-nuB"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -423,6 +429,7 @@
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
                         <outlet property="flowlayout" destination="xTI-w4-EgC" id="I1n-UU-kan"/>
+                        <outlet property="headerImage" destination="ngW-dQ-6v7" id="uMj-yD-vlI"/>
                         <outlet property="offeringsCollectionView" destination="y61-z6-slJ" id="fBH-NV-kcF"/>
                         <outlet property="offeringsCollectionViewHeight" destination="3Rk-AU-RL9" id="9ew-jM-7ee"/>
                         <outlet property="reviewsCollectionView" destination="u3p-wX-bzr" id="pqh-2w-yjl"/>

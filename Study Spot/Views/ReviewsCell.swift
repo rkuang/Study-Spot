@@ -23,7 +23,7 @@ class ReviewsCell: UICollectionViewCell {
     let name: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Futura", size: 17)
-        label.textColor = UIColor(white: 0.30, alpha: 1)
+        label.textColor = UIColor(white: 0.45, alpha: 1)
         label.text = "John Doe"
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
