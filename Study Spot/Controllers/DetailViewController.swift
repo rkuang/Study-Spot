@@ -12,6 +12,12 @@ import Cosmos
 
 class DetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var offeringsCollectionView: UICollectionView!
+    @IBOutlet weak var offeringsCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var flowlayout: DGCollectionViewLeftAlignFlowLayout!
+    @IBOutlet weak var reviewsCollectionView: UICollectionView!
+    @IBOutlet weak var reviewsCollectionViewHeight: NSLayoutConstraint!
+
     let offeringsCell = "offeringsCell"
     let reviewsCell = "reviewsCell"
 
@@ -21,13 +27,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         Offering(image: "pencil-alt-solid", name: "Big Workspace"),
         Offering(image: "lightbulb-solid", name: "Well Lit")
     ]
-    
-    @IBOutlet weak var offeringsCollectionView: UICollectionView!
-    @IBOutlet weak var offeringsCollectionViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var flowlayout: DGCollectionViewLeftAlignFlowLayout!
-
-    @IBOutlet weak var reviewsCollectionView: UICollectionView!
-    @IBOutlet weak var reviewsCollectionViewHeight: NSLayoutConstraint!
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
@@ -64,18 +63,23 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         return (collectionViewLayout as! UICollectionViewFlowLayout).itemSize
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 24
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         offeringsCollectionView.delegate = self
         offeringsCollectionView.dataSource = self
         flowlayout.itemSize = CGSize(width: 100, height: 25)
         flowlayout.estimatedItemSize = CGSize(width: 100, height: 25)
-        flowlayout.minimumInteritemSpacing = 24
-        flowlayout.minimumLineSpacing = 16
         
         reviewsCollectionView.delegate = self
         reviewsCollectionView.dataSource = self
-        (reviewsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).minimumLineSpacing = 16
         
         offeringsCollectionViewHeight.constant = offeringsCollectionView.collectionViewLayout.collectionViewContentSize.height
         reviewsCollectionViewHeight.constant = reviewsCollectionView.collectionViewLayout.collectionViewContentSize.height

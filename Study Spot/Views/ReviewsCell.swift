@@ -47,8 +47,8 @@ class ReviewsCell: UICollectionViewCell {
         label.textColor = UIColor(white: 0.45, alpha: 1)
         label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare quam sed nibh fermentum gravida a vel turpis."
         label.numberOfLines = 4
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
