@@ -10,14 +10,15 @@ import UIKit
 import DGCollectionViewLeftAlignFlowLayout
 import Cosmos
 
-class DetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class DetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
     @IBOutlet weak var offeringsCollectionView: UICollectionView!
     @IBOutlet weak var offeringsCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var flowlayout: DGCollectionViewLeftAlignFlowLayout!
     @IBOutlet weak var reviewsCollectionView: UICollectionView!
     @IBOutlet weak var reviewsCollectionViewHeight: NSLayoutConstraint!
-
+    @IBOutlet weak var headerImage: UIImageView!
+    
     let offeringsCell = "offeringsCell"
     let reviewsCell = "reviewsCell"
 
@@ -69,6 +70,13 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let y =  scrollView.contentOffset.y
+        if y < 0 {
+            headerImage.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: 240 - y)
+        }
     }
     
     override func viewDidLoad() {
