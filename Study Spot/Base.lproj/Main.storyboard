@@ -87,7 +87,7 @@
                                                             <rect key="frame" x="0.0" y="30.5" width="235" height="20"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Hcu-vK-pJ8" customClass="CosmosView" customModule="Cosmos">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="131" height="20"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="123" height="20"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="GVd-DK-qbx"/>
@@ -106,7 +106,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6U-bY-V0p">
-                                                                    <rect key="frame" x="167" y="0.5" width="68" height="19.5"/>
+                                                                    <rect key="frame" x="159" y="0.5" width="76" height="19.5"/>
                                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                                                     <color key="textColor" white="0.45000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -132,7 +132,7 @@
                                     <outlet property="name" destination="fhb-c6-Y4B" id="9hf-HA-GCP"/>
                                     <outlet property="num_reviews" destination="g6U-bY-V0p" id="KlJ-th-0Zb"/>
                                     <outlet property="rating" destination="Hcu-vK-pJ8" id="bNs-MO-yTR"/>
-                                    <segue destination="YHv-LF-SoD" kind="show" id="pXv-nH-1zd"/>
+                                    <segue destination="YHv-LF-SoD" kind="show" identifier="detailSegue" id="pXv-nH-1zd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -428,10 +428,15 @@
                     </view>
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
+                        <outlet property="activitySlider" destination="Cv1-M5-crc" id="gul-ex-SvT"/>
+                        <outlet property="comfortSlider" destination="7Ov-aV-hsZ" id="5F7-cL-s7X"/>
                         <outlet property="flowlayout" destination="xTI-w4-EgC" id="I1n-UU-kan"/>
                         <outlet property="headerImage" destination="ngW-dQ-6v7" id="uMj-yD-vlI"/>
+                        <outlet property="name" destination="fEC-sn-lIQ" id="Av0-YI-fJe"/>
+                        <outlet property="noiseSlider" destination="JgD-kS-oNp" id="e6o-1e-hxl"/>
                         <outlet property="offeringsCollectionView" destination="y61-z6-slJ" id="fBH-NV-kcF"/>
                         <outlet property="offeringsCollectionViewHeight" destination="3Rk-AU-RL9" id="9ew-jM-7ee"/>
+                        <outlet property="rating" destination="gyF-wa-m9J" id="c1W-1y-xZx"/>
                         <outlet property="reviewsCollectionView" destination="u3p-wX-bzr" id="pqh-2w-yjl"/>
                         <outlet property="reviewsCollectionViewHeight" destination="C5k-qE-ddH" id="a8J-nl-dUS"/>
                     </connections>

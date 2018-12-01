@@ -32,6 +32,14 @@ class ListViewController: UITableViewController {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "detailSegue") {
+            let viewController = segue.destination as! DetailViewController
+            let index = self.tableView.indexPathForSelectedRow!.row
+            viewController.spot = spots[index]
+        }
+    }
+    
     func getSpots() {
         db = Firestore.firestore()
         let query = db.collection("spots").limit(to: 25)
@@ -40,15 +48,14 @@ class ListViewController: UITableViewController {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
                     if let model = StudySpot(dictionary: document.data()) {
-                        print("\(document.documentID) => \(document.data())")
                         self.spots.append(model)
                     } else {
-                        print("error")
+                        fatalError("Failed to instantiate StudySpot")
                     }
                 }
             }
-            print(self.spots)
             self.tableView.reloadData()
         }
     }

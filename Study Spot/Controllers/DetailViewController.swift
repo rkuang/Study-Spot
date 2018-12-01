@@ -32,7 +32,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case self.offeringsCollectionView:
-            return offerings.count
+            return spot.offerings.count
         case self.reviewsCollectionView:
             return 3
         default:
@@ -79,8 +79,32 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
+    var spot: StudySpot!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCollectionViews()
+        setupViews()
+        print(spot)
+    }
+    
+    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var rating: CosmosView!
+    @IBOutlet weak var noiseSlider: CustomSlider!
+    @IBOutlet weak var activitySlider: CustomSlider!
+    @IBOutlet weak var comfortSlider: CustomSlider!
+    
+    func setupViews() {
+        name.text = spot.name
+        rating.rating = spot.rating
+        
+        noiseSlider.value = Float(spot.environment["noise"] ?? 0)
+        activitySlider.value = Float(spot.environment["activity"] ?? 0)
+        comfortSlider.value = Float(spot.environment["comfort"] ?? 0)
+    }
+    
+    func setupCollectionViews() {
         offeringsCollectionView.delegate = self
         offeringsCollectionView.dataSource = self
         flowlayout.itemSize = CGSize(width: 100, height: 25)

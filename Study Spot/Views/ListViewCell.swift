@@ -20,12 +20,6 @@ class ListViewCell: UITableViewCell {
         self.layoutMargins = UIEdgeInsets.zero
         self.preservesSuperviewLayoutMargins = false
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        print("selected")
-        // Configure the view for the selected state
-    }
     
     func populate(spot: StudySpot) {
         self.name.text = spot.name
