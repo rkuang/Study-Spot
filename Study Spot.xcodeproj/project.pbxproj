@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D1041664AA7AF1232CFC9931 /* Pods_Study_Spot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08ED7430CD1113DE68C6ECE1 /* Pods_Study_Spot.framework */; };
 		DC432D6721B0838E0053F610 /* OfferingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC432D6621B0838E0053F610 /* OfferingsCell.swift */; };
-		DC432D6921B0841B0053F610 /* Offering.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC432D6821B0841B0053F610 /* Offering.swift */; };
 		DC432D6D21B08F9B0053F610 /* ReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC432D6C21B08F9B0053F610 /* ReviewsCell.swift */; };
 		DC432D6F21B0EB550053F610 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC432D6E21B0EB540053F610 /* GoogleService-Info.plist */; };
 		DC432D7121B1DA310053F610 /* StudySpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC432D7021B1DA310053F610 /* StudySpot.swift */; };
@@ -27,7 +26,6 @@
 		08ED7430CD1113DE68C6ECE1 /* Pods_Study_Spot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Study_Spot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DDEAD784019A3AA8AC3E7DE /* Pods-Study Spot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Study Spot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Study Spot/Pods-Study Spot.debug.xcconfig"; sourceTree = "<group>"; };
 		DC432D6621B0838E0053F610 /* OfferingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferingsCell.swift; sourceTree = "<group>"; };
-		DC432D6821B0841B0053F610 /* Offering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offering.swift; sourceTree = "<group>"; };
 		DC432D6C21B08F9B0053F610 /* ReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsCell.swift; sourceTree = "<group>"; };
 		DC432D6E21B0EB540053F610 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC432D7021B1DA310053F610 /* StudySpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySpot.swift; sourceTree = "<group>"; };
@@ -76,7 +74,6 @@
 		DC432D6321B082F40053F610 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DC432D6821B0841B0053F610 /* Offering.swift */,
 				DC432D7021B1DA310053F610 /* StudySpot.swift */,
 			);
 			path = Models;
@@ -289,7 +286,6 @@
 				DC432D6721B0838E0053F610 /* OfferingsCell.swift in Sources */,
 				DC6A795921AE472D0024CD65 /* CustomSlider.swift in Sources */,
 				DC6C3D6421A38F2500889A55 /* ListViewController.swift in Sources */,
-				DC432D6921B0841B0053F610 /* Offering.swift in Sources */,
 				DC6C3D6221A38F2500889A55 /* AppDelegate.swift in Sources */,
 				DC6A795621AE3E880024CD65 /* DetailViewController.swift in Sources */,
 				DC432D7121B1DA310053F610 /* StudySpot.swift in Sources */,

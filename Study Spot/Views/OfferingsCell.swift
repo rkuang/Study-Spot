@@ -37,4 +37,9 @@ class OfferingsCell : UICollectionViewCell {
         
     }
     
+    func populate(offering: (String, String)) {
+        imageView.image = UIImage(named: offering.0)
+        label.text = offering.1
+    }
+    
 }

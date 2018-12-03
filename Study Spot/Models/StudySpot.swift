@@ -11,7 +11,7 @@ struct StudySpot {
     var rating: Double
     var num_reviews: Int
     var environment: [String: Double]
-    var offerings: [Any]
+    var offerings: [String]
     
     var dictionary: [String: Any] {
         return [

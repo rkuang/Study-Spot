@@ -21,13 +21,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     let offeringsCell = "offeringsCell"
     let reviewsCell = "reviewsCell"
-
-    let offerings = [
-        Offering(image: "wifi-solid", name: "Free WiFi"),
-        Offering(image: "plug-solid", name: "Power Outlets"),
-        Offering(image: "pencil-alt-solid", name: "Big Workspace"),
-        Offering(image: "lightbulb-solid", name: "Well Lit")
-    ]
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
@@ -40,13 +33,19 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
+    let offerings = [
+        "free-wifi": ("wifi-solid", "Free Wifi"),
+        "power-outlets": ("plug-solid", "Power Outlets"),
+        "big-workspace": ("pencil-alt-solid", "Big Workspace"),
+        "well-lit": ("lightbulb-solid", "Well Lit")
+    ]
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
         case self.offeringsCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: offeringsCell, for: indexPath) as! OfferingsCell
-            let offering = offerings[indexPath.row]
-            cell.imageView.image = UIImage(named: offering.image)
-            cell.label.text = offering.name
+            let offering = spot.offerings[indexPath.row]
+            cell.populate(offering: offerings[offering]!)
             return cell
         case self.reviewsCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reviewsCell, for: indexPath) as! ReviewsCell
