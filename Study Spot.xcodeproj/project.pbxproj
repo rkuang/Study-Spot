@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D1041664AA7AF1232CFC9931 /* Pods_Study_Spot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08ED7430CD1113DE68C6ECE1 /* Pods_Study_Spot.framework */; };
+		DC1565CA21B717ED00BF7154 /* NewReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1565C921B717ED00BF7154 /* NewReviewViewController.swift */; };
+		DC1565CC21B719AD00BF7154 /* NewStudySpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1565CB21B719AD00BF7154 /* NewStudySpotViewController.swift */; };
 		DC432D6721B0838E0053F610 /* OfferingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC432D6621B0838E0053F610 /* OfferingsCell.swift */; };
 		DC432D6D21B08F9B0053F610 /* ReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC432D6C21B08F9B0053F610 /* ReviewsCell.swift */; };
 		DC432D6F21B0EB550053F610 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC432D6E21B0EB540053F610 /* GoogleService-Info.plist */; };
@@ -26,6 +28,8 @@
 /* Begin PBXFileReference section */
 		08ED7430CD1113DE68C6ECE1 /* Pods_Study_Spot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Study_Spot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DDEAD784019A3AA8AC3E7DE /* Pods-Study Spot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Study Spot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Study Spot/Pods-Study Spot.debug.xcconfig"; sourceTree = "<group>"; };
+		DC1565C921B717ED00BF7154 /* NewReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReviewViewController.swift; sourceTree = "<group>"; };
+		DC1565CB21B719AD00BF7154 /* NewStudySpotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStudySpotViewController.swift; sourceTree = "<group>"; };
 		DC432D6621B0838E0053F610 /* OfferingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferingsCell.swift; sourceTree = "<group>"; };
 		DC432D6C21B08F9B0053F610 /* ReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsCell.swift; sourceTree = "<group>"; };
 		DC432D6E21B0EB540053F610 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 			children = (
 				DC6C3D6321A38F2500889A55 /* ListViewController.swift */,
 				DC6A795521AE3E880024CD65 /* DetailViewController.swift */,
+				DC1565C921B717ED00BF7154 /* NewReviewViewController.swift */,
+				DC1565CB21B719AD00BF7154 /* NewStudySpotViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -290,9 +296,11 @@
 				DC432D6721B0838E0053F610 /* OfferingsCell.swift in Sources */,
 				DC6A795921AE472D0024CD65 /* CustomSlider.swift in Sources */,
 				DC6C3D6421A38F2500889A55 /* ListViewController.swift in Sources */,
+				DC1565CC21B719AD00BF7154 /* NewStudySpotViewController.swift in Sources */,
 				DC6C3D6221A38F2500889A55 /* AppDelegate.swift in Sources */,
 				DC6A795621AE3E880024CD65 /* DetailViewController.swift in Sources */,
 				DC432D7121B1DA310053F610 /* StudySpot.swift in Sources */,
+				DC1565CA21B717ED00BF7154 /* NewReviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

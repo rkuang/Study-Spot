@@ -20,9 +20,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var reviewsCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var headerImage: UIImageView!
     
-    let offeringsCell = "offeringsCell"
-    let reviewsCell = "reviewsCell"
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case self.offeringsCollectionView:
@@ -33,6 +30,9 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
             return 0
         }
     }
+    
+    let offeringsCell = "offeringsCell"
+    let reviewsCell = "reviewsCell"
     
     let offerings = [
         "free-wifi": ("wifi-solid", "Free Wifi"),
@@ -60,7 +60,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.reviewsCollectionView {
-            let height = calculateHeightForCell(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare quam sed nibh fermentum gravida a vel turpis.", width: collectionView.frame.width)
+            let height = calculateHeightForCell(text: reviews[indexPath.row].text, width: collectionView.frame.width)
             return CGSize(width: collectionView.frame.width, height: height)
         }
         return (collectionViewLayout as! UICollectionViewFlowLayout).itemSize
