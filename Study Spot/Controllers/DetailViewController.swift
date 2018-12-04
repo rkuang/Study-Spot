@@ -9,6 +9,7 @@
 import UIKit
 import DGCollectionViewLeftAlignFlowLayout
 import Cosmos
+import FirebaseFirestore
 
 class DetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
@@ -27,7 +28,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         case self.offeringsCollectionView:
             return spot.offerings.count
         case self.reviewsCollectionView:
-            return 3
+            return reviews.count
         default:
             return 0
         }
@@ -49,6 +50,8 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
             return cell
         case self.reviewsCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reviewsCell, for: indexPath) as! ReviewsCell
+            let review = reviews[indexPath.row]
+            cell.populate(review: review)
             return cell
         default:
             fatalError("bad cell")
@@ -84,7 +87,8 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         super.viewDidLoad()
         setupCollectionViews()
         setupViews()
-        print(spot)
+        getReviews()
+//        print(spot)
     }
     
     
@@ -127,6 +131,34 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         let dimens: [String: CGFloat] = ["avatar": 40, "stars": 20, "padding": 24]
         
         return label.frame.height + dimens["avatar"]! + dimens["stars"]! + dimens["padding"]!
+    }
+    
+    var docRef: DocumentReference!
+    var reviews = [Review]()
+    
+    func getReviews() {
+        let query = docRef.collection("reviews").limit(to: 3)
+        query.getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+//                    print("\(document.documentID) => \(document.data())")
+                    if let model = Review(dictionary: document.data()) {
+                        self.reviews.append(model)
+                    } else {
+                        fatalError("Failed to instantiate StudySpot")
+                    }
+                }
+            }
+            self.reloadData(collectionView: self.reviewsCollectionView, height: self.reviewsCollectionViewHeight)
+        }
+    }
+    
+    func reloadData(collectionView: UICollectionView, height: NSLayoutConstraint) {
+        collectionView.reloadData()
+        height.constant = collectionView.collectionViewLayout.collectionViewContentSize.height
+        self.view.setNeedsLayout()
     }
     
     

@@ -67,4 +67,9 @@ class ReviewsCell: UICollectionViewCell {
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[text]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDict))
         
     }
+    
+    func populate(review: Review) {
+        rating.rating = review.rating
+        text.text = review.text
+    }
 }

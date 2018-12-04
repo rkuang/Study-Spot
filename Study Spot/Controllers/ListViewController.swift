@@ -13,6 +13,7 @@ class ListViewController: UITableViewController {
     
     var db: Firestore!
     var spots = [StudySpot]()
+    var docRefs = [DocumentReference]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class ListViewController: UITableViewController {
             let viewController = segue.destination as! DetailViewController
             let index = self.tableView.indexPathForSelectedRow!.row
             viewController.spot = spots[index]
+            viewController.docRef = docRefs[index]
         }
     }
     
@@ -48,9 +50,10 @@ class ListViewController: UITableViewController {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
+//                    print("\(document.documentID) => \(document.data())")
                     if let model = StudySpot(dictionary: document.data()) {
                         self.spots.append(model)
+                        self.docRefs.append(document.reference)
                     } else {
                         fatalError("Failed to instantiate StudySpot")
                     }
