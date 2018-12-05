@@ -11,14 +11,20 @@ import DGCollectionViewLeftAlignFlowLayout
 import Cosmos
 import FirebaseFirestore
 
+
+private let offeringsCell = "offeringsCell"
+private let reviewsCell = "reviewsCell"
+
+private let offerings = [
+    "free-wifi": ("wifi-solid", "Free Wifi"),
+    "power-outlets": ("plug-solid", "Power Outlets"),
+    "big-workspace": ("pencil-alt-solid", "Big Workspace"),
+    "well-lit": ("lightbulb-solid", "Well Lit")
+]
+
 class DetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
-    @IBOutlet weak var offeringsCollectionView: UICollectionView!
-    @IBOutlet weak var offeringsCollectionViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var flowlayout: DGCollectionViewLeftAlignFlowLayout!
-    @IBOutlet weak var reviewsCollectionView: UICollectionView!
-    @IBOutlet weak var reviewsCollectionViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var headerImage: UIImageView!
+    // MARK: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
@@ -30,16 +36,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
             return 0
         }
     }
-    
-    let offeringsCell = "offeringsCell"
-    let reviewsCell = "reviewsCell"
-    
-    let offerings = [
-        "free-wifi": ("wifi-solid", "Free Wifi"),
-        "power-outlets": ("plug-solid", "Power Outlets"),
-        "big-workspace": ("pencil-alt-solid", "Big Workspace"),
-        "well-lit": ("lightbulb-solid", "Well Lit")
-    ]
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
@@ -58,12 +54,26 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
+    // MARK: UICollectionViewDelegateFlowLayout
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.reviewsCollectionView {
             let height = calculateHeightForCell(text: reviews[indexPath.row].text, width: collectionView.frame.width)
             return CGSize(width: collectionView.frame.width, height: height)
         }
         return (collectionViewLayout as! UICollectionViewFlowLayout).itemSize
+    }
+    
+    func calculateHeightForCell(text:String, width: CGFloat) -> CGFloat {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 4
+        label.font = UIFont(name: "Futura", size: 17)
+        label.text = text
+        label.sizeToFit()
+        
+        let dimens: [String: CGFloat] = ["avatar": 40, "stars": 20, "padding": 24]
+        
+        return label.frame.height + dimens["avatar"]! + dimens["stars"]! + dimens["padding"]!
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -74,12 +84,16 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         return 16
     }
     
+    // MARK: UIScrollViewDelegate
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y =  scrollView.contentOffset.y
         if y < 0 {
             headerImage.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: 240 - y)
         }
     }
+    
+    // MARK: UIViewController
     
     var spot: StudySpot!
     
@@ -88,9 +102,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         setupCollectionViews()
         setupViews()
         getReviews()
-//        print(spot)
     }
-    
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var rating: CosmosView!
@@ -107,6 +119,13 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         comfortSlider.value = Float(spot.environment["comfort"] ?? 0)
     }
     
+    @IBOutlet weak var offeringsCollectionView: UICollectionView!
+    @IBOutlet weak var offeringsCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var flowlayout: DGCollectionViewLeftAlignFlowLayout!
+    @IBOutlet weak var reviewsCollectionView: UICollectionView!
+    @IBOutlet weak var reviewsCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var headerImage: UIImageView!
+    
     func setupCollectionViews() {
         offeringsCollectionView.delegate = self
         offeringsCollectionView.dataSource = self
@@ -121,18 +140,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         view.setNeedsLayout()
     }
     
-    func calculateHeightForCell(text:String, width: CGFloat) -> CGFloat {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
-        label.numberOfLines = 4
-        label.font = UIFont(name: "Futura", size: 17)
-        label.text = text
-        label.sizeToFit()
-        
-        let dimens: [String: CGFloat] = ["avatar": 40, "stars": 20, "padding": 24]
-        
-        return label.frame.height + dimens["avatar"]! + dimens["stars"]! + dimens["padding"]!
-    }
-    
     var docRef: DocumentReference!
     var reviews = [Review]()
     
@@ -143,7 +150,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-//                    print("\(document.documentID) => \(document.data())")
                     if let model = Review(dictionary: document.data()) {
                         self.reviews.append(model)
                     } else {
@@ -160,16 +166,4 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         height.constant = collectionView.collectionViewLayout.collectionViewContentSize.height
         self.view.setNeedsLayout()
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
