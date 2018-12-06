@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseFirestore
 
-class ListViewController: UITableViewController {
+class StudySpotTableViewController: UITableViewController {
     
     var db: Firestore!
     var spots = [StudySpot]()
@@ -35,7 +35,7 @@ class ListViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "detailSegue") {
-            let viewController = segue.destination as! DetailViewController
+            let viewController = segue.destination as! StudySpotDetailViewController
             let index = self.tableView.indexPathForSelectedRow!.row
             viewController.spot = spots[index]
             viewController.docRef = docRefs[index]

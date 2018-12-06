@@ -12,7 +12,6 @@ class OfferingsCell : UICollectionViewCell {
     
     let imageView: UIImageView = {
         let imageView = UIImageView()
-        //        imageView.backgroundColor = .green
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -20,7 +19,6 @@ class OfferingsCell : UICollectionViewCell {
     
     let label: UILabel = {
         let label = UILabel()
-        //        label.backgroundColor = .blue
         label.font = UIFont(name: "Futura", size: 17)
         label.textColor = UIColor(white: 0.45, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
