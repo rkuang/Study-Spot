@@ -427,6 +427,7 @@
                                             <constraint firstItem="304-LF-0Mz" firstAttribute="top" secondItem="u3p-wX-bzr" secondAttribute="bottom" constant="24" id="Nw0-Y0-mW4"/>
                                             <constraint firstAttribute="trailing" secondItem="u3p-wX-bzr" secondAttribute="trailing" id="Sbu-NG-IKB"/>
                                             <constraint firstItem="qFA-n2-rlE" firstAttribute="leading" secondItem="U9W-Td-Pzt" secondAttribute="leading" id="WQV-RJ-QX9"/>
+                                            <constraint firstItem="304-LF-0Mz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IE6-tn-tz6" secondAttribute="leading" priority="999" id="YfT-KW-UQz"/>
                                             <constraint firstAttribute="trailing" secondItem="y61-z6-slJ" secondAttribute="trailing" constant="24" id="Zva-Bl-oey"/>
                                             <constraint firstItem="DlP-KQ-lBK" firstAttribute="leading" secondItem="IE6-tn-tz6" secondAttribute="leading" constant="24" id="gxx-oX-cYD"/>
                                             <constraint firstItem="ngW-dQ-6v7" firstAttribute="top" secondItem="IE6-tn-tz6" secondAttribute="top" id="hUd-kP-9WE"/>
@@ -524,13 +525,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BC2-Z6-4yJ">
                                     <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="0.0" height="16"/>
+                                    <size key="footerReferenceSize" width="0.0" height="24"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reviewsCell" id="La1-bt-jN1" customClass="ReviewsCell" customModule="Study_Spot" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="16" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -538,6 +539,14 @@
                                         </view>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="nil_header" id="3kh-La-iTV">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="nil_footer" id="DmG-x9-1aR">
+                                    <rect key="frame" x="0.0" y="66" width="375" height="24"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
