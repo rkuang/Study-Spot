@@ -39,7 +39,8 @@ extension Firestore {
     }
     
     func retrieveReviews(docRef: DocumentReference, _ callback: @escaping (_ reviews: [Review]) -> Void) {
-        self.reviews(docRef: docRef).getDocuments { (querySnapshot, err) in
+        let reviewsCollection = self.reviews(docRef: docRef)
+        reviewsCollection.getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
