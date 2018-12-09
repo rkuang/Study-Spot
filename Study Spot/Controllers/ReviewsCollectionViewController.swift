@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 private let reuseId = "reviewsCell"
 
-class ReviewsTableViewController: UIViewController {
+class ReviewsCollectionViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     

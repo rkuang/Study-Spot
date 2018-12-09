@@ -15,14 +15,13 @@ class ReviewsCollectionDelegateAndDataSource: NSObject, UICollectionViewDelegate
     var reviews = [Review]()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
-        //        return reviews.count
+        return reviews.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reviewsReuseId, for: indexPath) as! ReviewsCell
-        //        let review = reviews[indexPath.row]
-        //        cell.populate(review: review)
+        let review = reviews[indexPath.row]
+        cell.populate(review: review)
         return cell
     }
     

@@ -75,22 +75,10 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     var docRef: DocumentReference!
-    var reviews = [Review]()
     
     func getReviews() {
-        let query = docRef.collection("reviews").limit(to: 3)
-        query.getDocuments { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    if let model = Review(dictionary: document.data()) {
-                        self.reviews.append(model)
-                    } else {
-                        fatalError("Failed to instantiate StudySpot")
-                    }
-                }
-            }
+        Firestore.firestore().retrieveReviews(docRef: docRef) { (reviews) in
+            self.reviewsDataSourceAndDelegate.reviews = reviews
             self.reloadData(collectionView: self.reviewsCollectionView, height: self.reviewsCollectionViewHeight)
         }
     }

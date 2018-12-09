@@ -511,10 +511,10 @@
             </objects>
             <point key="canvasLocation" x="1809" y="416"/>
         </scene>
-        <!--Reviews Table View Controller-->
+        <!--Reviews Collection View Controller-->
         <scene sceneID="b8r-tZ-jYb">
             <objects>
-                <viewController id="Fgc-r8-erv" customClass="ReviewsTableViewController" customModule="Study_Spot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Fgc-r8-erv" customClass="ReviewsCollectionViewController" customModule="Study_Spot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JTQ-It-JiM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
