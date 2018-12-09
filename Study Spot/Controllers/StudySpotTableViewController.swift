@@ -20,8 +20,10 @@ class StudySpotTableViewController: UITableViewController {
         tableView.backgroundView = nil
         tableView.backgroundColor = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1)
         
-//        getSpots()
-        test()
+        db = Firestore.firestore()
+        retrieveStudySpots {
+            self.tableView.reloadData()
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,11 +45,22 @@ class StudySpotTableViewController: UITableViewController {
         }
     }
     
-    func test() {
-        Firestore.firestore().retrieveStudySpots { (spots, docRefs) in
-            self.studySpots = spots
-            self.docRefs = docRefs
-            self.tableView.reloadData()
+    func retrieveStudySpots(_ callback: @escaping () -> Void) {
+        self.db.studySpots.getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    if let model = StudySpot(dictionary: document.data()) {
+                        // Add model to data source
+                        self.studySpots.append(model)
+                        self.docRefs.append(document.reference)
+                    } else {
+                        fatalError("Failed to create StudySpot object")
+                    }
+                }
+                callback()
+            }
         }
     }
 }

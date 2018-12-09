@@ -9,6 +9,7 @@
 import FirebaseFirestore
 
 extension Firestore {
+    
     public var studySpots: CollectionReference {
         return self.collection("spots")
     }
@@ -17,24 +18,4 @@ extension Firestore {
         return docRef.collection("reviews")
     }
     
-    func retrieveStudySpots(_ callback: @escaping (_ studySpots: [StudySpot], _ docRefs: [DocumentReference]) -> Void) {
-        self.studySpots.getDocuments { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                var spots = [StudySpot]()
-                var docRefs = [DocumentReference]()
-                for document in querySnapshot!.documents {
-                    if let model = StudySpot(dictionary: document.data()) {
-                        // Add model to data source
-                        spots.append(model)
-                        docRefs.append(document.reference)
-                    } else {
-                        fatalError("Failed to create StudySpot object")
-                    }
-                }
-                callback(spots, docRefs)
-            }
-        }
-    }
 }
