@@ -15,12 +15,12 @@ class ReviewsCollectionViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let dataSourceAndDelegate = ReviewsCollectionDelegateAndDataSource()
+//    let dataSourceAndDelegate = ReviewsCollectionDelegateAndDataSource(docRef: <#T##DocumentReference#>)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.delegate = dataSourceAndDelegate
-        collectionView.dataSource = dataSourceAndDelegate
+//        collectionView.delegate = dataSourceAndDelegate
+//        collectionView.dataSource = dataSourceAndDelegate
     }
 }

@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 private let reviewsReuseId = "reviewsCell"
 
 class ReviewsCollectionDelegateAndDataSource: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var reviews = [Review]()
+    var reviews: [Review]
+    var db: Firestore
+    var docRef: DocumentReference!
+    
+    override init() {
+        self.reviews = [Review]()
+        self.db = Firestore.firestore()
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return reviews.count
@@ -26,8 +34,8 @@ class ReviewsCollectionDelegateAndDataSource: NSObject, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //        let height = calculateHeightForCell(text: reviews[indexPath.row].text, width: collectionView.frame.width)
-        return CGSize(width: collectionView.frame.width-48, height: 160)
+        let height = calculateHeightForCell(text: reviews[indexPath.row].text, width: collectionView.frame.width)
+        return CGSize(width: collectionView.frame.width-48, height: height)
     }
     
     func calculateHeightForCell(text:String, width: CGFloat) -> CGFloat {
@@ -48,5 +56,23 @@ class ReviewsCollectionDelegateAndDataSource: NSObject, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16
+    }
+    
+    func retrieveReviews(docRef: DocumentReference, _ callback: @escaping () -> Void) {
+        let reviewsCollection = self.db.reviews(docRef: docRef)
+        reviewsCollection.getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    if let model = Review(dictionary: document.data()) {
+                        self.reviews.append(model)
+                    } else {
+                        fatalError("Could not deserialize Review")
+                    }
+                }
+                callback()
+            }
+        }
     }
 }

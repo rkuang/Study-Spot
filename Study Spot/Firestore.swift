@@ -37,23 +37,4 @@ extension Firestore {
             }
         }
     }
-    
-    func retrieveReviews(docRef: DocumentReference, _ callback: @escaping (_ reviews: [Review]) -> Void) {
-        let reviewsCollection = self.reviews(docRef: docRef)
-        reviewsCollection.getDocuments { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                var reviews = [Review]()
-                for document in querySnapshot!.documents {
-                    if let model = Review(dictionary: document.data()) {
-                        reviews.append(model)
-                    } else {
-                        fatalError("Could not deserialize Review")
-                    }
-                }
-                callback(reviews)
-            }
-        }
-    }
 }

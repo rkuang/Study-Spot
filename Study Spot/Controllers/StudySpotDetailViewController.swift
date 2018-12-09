@@ -27,12 +27,12 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
     // MARK: UIViewController
     
     var spot: StudySpot!
+    var docRef: DocumentReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionViews()
         setupViews()
-        getReviews()
     }
     
     @IBOutlet weak var name: UILabel!
@@ -61,26 +61,26 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
     let offeringsDataSourceAndDelegate = OfferingsCollectionDelegateAndDataSource()
     
     func setupCollectionViews() {
+        setupOfferingsCollectionView()
+        setupReviewsCollectionView()
+    }
+    
+    func setupOfferingsCollectionView() {
+        offeringsDataSourceAndDelegate.offerings = spot.offerings
         offeringsCollectionView.delegate = offeringsDataSourceAndDelegate
         offeringsCollectionView.dataSource = offeringsDataSourceAndDelegate
         flowlayout.itemSize = CGSize(width: 100, height: 25)
         flowlayout.estimatedItemSize = CGSize(width: 100, height: 25)
-        
-        reviewsCollectionView.delegate = reviewsDataSourceAndDelegate
-        reviewsCollectionView.dataSource = reviewsDataSourceAndDelegate
-        
         offeringsCollectionViewHeight.constant = offeringsCollectionView.collectionViewLayout.collectionViewContentSize.height
-        reviewsCollectionViewHeight.constant = reviewsCollectionView.collectionViewLayout.collectionViewContentSize.height
-        view.setNeedsLayout()
     }
     
-    var docRef: DocumentReference!
-    
-    func getReviews() {
-        Firestore.firestore().retrieveReviews(docRef: docRef) { (reviews) in
-            self.reviewsDataSourceAndDelegate.reviews = reviews
+    func setupReviewsCollectionView() {
+        reviewsCollectionView.delegate = reviewsDataSourceAndDelegate
+        reviewsCollectionView.dataSource = reviewsDataSourceAndDelegate
+        reviewsDataSourceAndDelegate.retrieveReviews(docRef: self.docRef) {
             self.reloadData(collectionView: self.reviewsCollectionView, height: self.reviewsCollectionViewHeight)
         }
+        reviewsCollectionViewHeight.constant = reviewsCollectionView.collectionViewLayout.collectionViewContentSize.height
     }
     
     func reloadData(collectionView: UICollectionView, height: NSLayoutConstraint) {
