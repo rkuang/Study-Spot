@@ -12,7 +12,7 @@ import FirebaseFirestore
 class StudySpotTableViewController: UITableViewController {
     
     var db: Firestore!
-    var spots = [StudySpot]()
+    var studySpots = [StudySpot]()
     var docRefs = [DocumentReference]()
     
     override func viewDidLoad() {
@@ -20,49 +20,35 @@ class StudySpotTableViewController: UITableViewController {
         tableView.backgroundView = nil
         tableView.backgroundColor = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1)
         
-        getSpots()
+//        getSpots()
+        test()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return spots.count
+        return studySpots.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as! ListViewCell
-        cell.populate(spot: spots[indexPath.row])
+        cell.populate(spot: studySpots[indexPath.row])
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "detailSegue") {
-            let viewController = segue.destination as! StudySpotDetailViewController
+            let vc = segue.destination as! StudySpotDetailViewController
             let index = self.tableView.indexPathForSelectedRow!.row
-            viewController.spot = spots[index]
-            viewController.docRef = docRefs[index]
+            vc.spot = studySpots[index]
+            vc.docRef = docRefs[index]
         }
     }
     
-    func getSpots() {
-        db = Firestore.firestore()
-        let query = db.collection("spots").limit(to: 25)
-        query.getDocuments { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-//                    print("\(document.documentID) => \(document.data())")
-                    if let model = StudySpot(dictionary: document.data()) {
-                        self.spots.append(model)
-                        self.docRefs.append(document.reference)
-                    } else {
-                        fatalError("Failed to instantiate StudySpot")
-                    }
-                }
-            }
+    func test() {
+        Firestore.firestore().retrieveStudySpots { (spots, docRefs) in
+            self.studySpots = spots
+            self.docRefs = docRefs
             self.tableView.reloadData()
         }
     }
-    
-    
 }
 
