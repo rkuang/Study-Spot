@@ -15,11 +15,19 @@ class ReviewsCollectionDelegateAndDataSource: NSObject, UICollectionViewDelegate
     
     var reviews: [Review]
     var db: Firestore
+    var limit: Int
     var docRef: DocumentReference!
     
     override init() {
         self.reviews = [Review]()
         self.db = Firestore.firestore()
+        self.limit = 25
+    }
+    
+    init(limit: Int) {
+        self.reviews = [Review]()
+        self.db = Firestore.firestore()
+        self.limit = limit
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -34,7 +42,8 @@ class ReviewsCollectionDelegateAndDataSource: NSObject, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = calculateHeightForCell(text: reviews[indexPath.row].text, width: collectionView.frame.width)
+        let width = collectionView.frame.width-48
+        let height = calculateHeightForCell(text: reviews[indexPath.row].text, width: width)
         return CGSize(width: collectionView.frame.width-48, height: height)
     }
     
@@ -45,7 +54,7 @@ class ReviewsCollectionDelegateAndDataSource: NSObject, UICollectionViewDelegate
         label.text = text
         label.sizeToFit()
         
-        let dimens: [String: CGFloat] = ["avatar": 40, "stars": 20, "padding": 24]
+        let dimens: [String: CGFloat] = ["avatar": 40, "stars": 20, "padding": 16]
         
         return label.frame.height + dimens["avatar"]! + dimens["stars"]! + dimens["padding"]!
     }
@@ -59,7 +68,7 @@ class ReviewsCollectionDelegateAndDataSource: NSObject, UICollectionViewDelegate
     }
     
     func retrieveReviews(docRef: DocumentReference, _ callback: @escaping () -> Void) {
-        let reviewsCollection = self.db.reviews(docRef: docRef)
+        let reviewsCollection = self.db.reviews(docRef: docRef).limit(to: self.limit)
         reviewsCollection.getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")

@@ -18,6 +18,7 @@
 		DC432D6D21B08F9B0053F610 /* ReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC432D6C21B08F9B0053F610 /* ReviewsCell.swift */; };
 		DC432D6F21B0EB550053F610 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC432D6E21B0EB540053F610 /* GoogleService-Info.plist */; };
 		DC432D7121B1DA310053F610 /* StudySpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC432D7021B1DA310053F610 /* StudySpot.swift */; };
+		DC50C6BB21C0944D00DBCF8B /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC50C6B921C0944D00DBCF8B /* DetailView.storyboard */; };
 		DC6A795621AE3E880024CD65 /* StudySpotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A795521AE3E880024CD65 /* StudySpotDetailViewController.swift */; };
 		DC6A795921AE472D0024CD65 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A795821AE472D0024CD65 /* CustomSlider.swift */; };
 		DC6C3D6221A38F2500889A55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6C3D6121A38F2500889A55 /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 		DC432D6C21B08F9B0053F610 /* ReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsCell.swift; sourceTree = "<group>"; };
 		DC432D6E21B0EB540053F610 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC432D7021B1DA310053F610 /* StudySpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySpot.swift; sourceTree = "<group>"; };
+		DC50C6BA21C0944D00DBCF8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DetailView.storyboard; sourceTree = "<group>"; };
 		DC6A795521AE3E880024CD65 /* StudySpotDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySpotDetailViewController.swift; sourceTree = "<group>"; };
 		DC6A795821AE472D0024CD65 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		DC6C3D5E21A38F2500889A55 /* Study Spot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Study Spot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +145,7 @@
 				DC432D6521B083160053F610 /* Controllers */,
 				DC6C3D6121A38F2500889A55 /* AppDelegate.swift */,
 				DC6C3D6521A38F2500889A55 /* Main.storyboard */,
+				DC50C6B921C0944D00DBCF8B /* DetailView.storyboard */,
 				DC6C3D6821A38F2600889A55 /* Assets.xcassets */,
 				DC6C3D6A21A38F2600889A55 /* LaunchScreen.storyboard */,
 				DC432D6E21B0EB540053F610 /* GoogleService-Info.plist */,
@@ -218,6 +221,7 @@
 				DC6C3D6C21A38F2600889A55 /* LaunchScreen.storyboard in Resources */,
 				DC432D6F21B0EB550053F610 /* GoogleService-Info.plist in Resources */,
 				DC6C3D6921A38F2600889A55 /* Assets.xcassets in Resources */,
+				DC50C6BB21C0944D00DBCF8B /* DetailView.storyboard in Resources */,
 				DC6C3D6721A38F2500889A55 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +327,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		DC50C6B921C0944D00DBCF8B /* DetailView.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC50C6BA21C0944D00DBCF8B /* Base */,
+			);
+			name = DetailView.storyboard;
+			sourceTree = "<group>";
+		};
 		DC6C3D6521A38F2500889A55 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

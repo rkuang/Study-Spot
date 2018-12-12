@@ -7,13 +7,22 @@
 //
 
 import UIKit
+import Cosmos
 
 class NewReviewViewController: UIViewController {
+    
+    var titleLabelText: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
-        // Do any additional setup after loading the view.
+        setupViews()
+    }
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var ratingSlider: CosmosView!
+    
+    func setupViews() {
+        titleLabel.text = titleLabelText
     }
     
 

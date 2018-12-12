@@ -42,6 +42,8 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var comfortSlider: CustomSlider!
     
     func setupViews() {
+        self.title = spot.name
+        
         name.text = spot.name
         rating.rating = spot.rating
         
@@ -57,7 +59,7 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var reviewsCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var headerImage: UIImageView!
     
-    let reviewsDataSourceAndDelegate = ReviewsCollectionDelegateAndDataSource()
+    let reviewsDataSourceAndDelegate = ReviewsCollectionDelegateAndDataSource(limit: 3)
     let offeringsDataSourceAndDelegate = OfferingsCollectionDelegateAndDataSource()
     
     func setupCollectionViews() {
@@ -98,9 +100,22 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "seeAllReviewsSegue" {
-//            let vc = segue.destination as! ReviewsViewController
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "seeAllReviewsSegue":
+            let vc = segue.destination as! ReviewsCollectionViewController
+            vc.docRef = self.docRef
+        case "newReviewSegue":
+            let vc = segue.destination as! NewReviewViewController
+            vc.titleLabelText = self.spot.name
+            print(self.spot.name)
+            
+        default:
+            break
+        }
+        if segue.identifier == "seeAllReviewsSegue" {
+            let vc = segue.destination as! ReviewsCollectionViewController
+            vc.docRef = self.docRef
+        }
+    }
 }

@@ -37,6 +37,7 @@ class ReviewsCell: UICollectionViewCell {
         cosmos.settings.emptyBorderColor = .black
         cosmos.settings.filledColor = .black
         cosmos.settings.filledBorderColor = .black
+        cosmos.settings.emptyBorderWidth = 1
         cosmos.translatesAutoresizingMaskIntoConstraints = false
         return cosmos
     }()
