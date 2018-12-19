@@ -462,8 +462,8 @@
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write your review here..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RuG-CR-Ha8">
-                                <rect key="frame" x="16" y="314" width="193.5" height="22.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write your review here..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RuG-CR-Ha8">
+                                <rect key="frame" x="16" y="314" width="343" height="22.5"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <color key="textColor" white="0.59999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -475,7 +475,9 @@
                             <constraint firstItem="0nq-Xg-G83" firstAttribute="top" secondItem="45c-as-Ryv" secondAttribute="bottom" constant="8" id="4ek-Py-n7H"/>
                             <constraint firstItem="0nq-Xg-G83" firstAttribute="leading" secondItem="sif-aM-GcT" secondAttribute="leading" constant="16" id="4nZ-Ry-guk"/>
                             <constraint firstAttribute="trailing" secondItem="6vu-Cg-iPh" secondAttribute="trailing" constant="16" id="6jU-Tg-ZEU"/>
+                            <constraint firstItem="UaH-43-bcs" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="45c-as-Ryv" secondAttribute="trailing" id="8bb-EF-U1b"/>
                             <constraint firstItem="g0l-JH-sNJ" firstAttribute="leading" secondItem="UaH-43-bcs" secondAttribute="leading" constant="16" id="G5z-ct-bXg"/>
+                            <constraint firstItem="RuG-CR-Ha8" firstAttribute="trailing" secondItem="6vu-Cg-iPh" secondAttribute="trailing" id="NPv-Ib-gYM"/>
                             <constraint firstItem="6vu-Cg-iPh" firstAttribute="leading" secondItem="UaH-43-bcs" secondAttribute="leading" constant="16" id="Qhw-cs-hLc"/>
                             <constraint firstItem="RuG-CR-Ha8" firstAttribute="top" secondItem="6vu-Cg-iPh" secondAttribute="top" id="VpM-Ry-xOP"/>
                             <constraint firstItem="g0l-JH-sNJ" firstAttribute="top" secondItem="0nq-Xg-G83" secondAttribute="bottom" constant="16" id="nBV-Iz-Z1x"/>
