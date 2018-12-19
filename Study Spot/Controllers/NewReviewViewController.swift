@@ -9,10 +9,10 @@
 import UIKit
 import Cosmos
 
-class NewReviewViewController: UIViewController {
+class NewReviewViewController: UIViewController, UITextViewDelegate {
     
     var titleLabelText: String!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -20,12 +20,27 @@ class NewReviewViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var ratingSlider: CosmosView!
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var hintLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     func setupViews() {
         titleLabel.text = titleLabelText
+        textView.delegate = self
+        textView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        textView.textContainer.lineFragmentPadding = 0
     }
     
-
+    // MARK: - UITextViewDelegate
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.count > 0 {
+            hintLabel.isHidden = true
+        } else {
+            hintLabel.isHidden = false
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

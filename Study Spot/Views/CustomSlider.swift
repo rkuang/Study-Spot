@@ -11,14 +11,18 @@ import UIKit
 class CustomSlider: UISlider {
 
     override func trackRect(forBounds bounds: CGRect) -> CGRect {
-        let customBounds = CGRect(origin: bounds.origin, size: CGSize(width: bounds.size.width, height: 5))
-        super.trackRect(forBounds: customBounds)
-        return customBounds
+        var newBounds = super.trackRect(forBounds: bounds)
+        newBounds.size.height = 5.0
+        return newBounds
     }
     
     override func awakeFromNib() {
-        self.setThumbImage(UIImage(), for: .normal)
+//        self.clearThumbImage()
         super.awakeFromNib()
+    }
+    
+    func clearThumbImage() {
+        self.setThumbImage(UIImage(), for: .normal)
     }
 
 }

@@ -42,9 +42,9 @@ class ReviewsCollectionDelegateAndDataSource: NSObject, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width-48
+        let width = collectionView.frame.width-32
         let height = calculateHeightForCell(text: reviews[indexPath.row].text, width: width)
-        return CGSize(width: collectionView.frame.width-48, height: height)
+        return CGSize(width: collectionView.frame.width-32, height: height)
     }
     
     func calculateHeightForCell(text:String, width: CGFloat) -> CGFloat {
@@ -60,7 +60,7 @@ class ReviewsCollectionDelegateAndDataSource: NSObject, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+        return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

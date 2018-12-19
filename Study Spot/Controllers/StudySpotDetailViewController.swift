@@ -50,6 +50,10 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
         noiseSlider.value = Float(spot.environment["noise"] ?? 0)
         activitySlider.value = Float(spot.environment["activity"] ?? 0)
         comfortSlider.value = Float(spot.environment["comfort"] ?? 0)
+        
+        noiseSlider.clearThumbImage()
+        activitySlider.clearThumbImage()
+        comfortSlider.clearThumbImage()
     }
     
     @IBOutlet weak var offeringsCollectionView: UICollectionView!
