@@ -8,10 +8,12 @@
 
 import UIKit
 import Cosmos
+import FirebaseFirestore
 
 class NewReviewViewController: UIViewController, UITextViewDelegate {
     
     var titleLabelText: String!
+    var docRef: DocumentReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,9 @@ class NewReviewViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var ratingSlider: CosmosView!
+    @IBOutlet weak var noiseSlider: UISlider!
+    @IBOutlet weak var activitySlider: UISlider!
+    @IBOutlet weak var comfortSlider: UISlider!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var hintLabel: UILabel!
 
@@ -68,6 +73,26 @@ class NewReviewViewController: UIViewController, UITextViewDelegate {
             let keyboardRect = keyboardFrame.cgRectValue
             print(keyboardRect.minY)
             keyboardHeight = keyboardRect.height + 24 + 16
+        }
+    }
+    
+    @IBAction func postReviewAction(_ sender: Any) {
+        let dictionary: [String: Any] = [
+            "timestamp": Timestamp(),
+            "rating": self.ratingSlider.rating,
+            "noise": self.noiseSlider.value,
+            "activity": self.activitySlider.value,
+            "comfort": self.comfortSlider.value,
+            "text": self.textView.text!
+        ]
+        if let review = Review(dictionary: dictionary) {
+            self.docRef.collection("reviews").addDocument(data: review.dictionary) { (err) in
+                if let err = err {
+                    print("There was an error: \(err)")
+                } else {
+                    self.performSegue(withIdentifier: "unwindToStudySpotDetail", sender: self)
+                }
+            }
         }
     }
     

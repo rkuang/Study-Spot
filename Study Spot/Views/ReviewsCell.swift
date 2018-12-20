@@ -30,6 +30,16 @@ class ReviewsCell: UICollectionViewCell {
         return label
     }()
     
+    let timestamp: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Futura", size: 15)
+        label.textColor = UIColor(white: 0.45, alpha: 1)
+        label.text = "12/19/2018"
+        label.numberOfLines = 1
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let rating: CosmosView = {
         let cosmos = CosmosView()
         cosmos.settings.updateOnTouch = false
@@ -56,14 +66,17 @@ class ReviewsCell: UICollectionViewCell {
     override func awakeFromNib() {
         contentView.addSubview(avatar)
         contentView.addSubview(name)
+        contentView.addSubview(timestamp)
         contentView.addSubview(rating)
         contentView.addSubview(text)
         
-        let viewsDict = ["avatar": avatar, "name": name, "rating": rating, "text": text]
+        let viewsDict = ["avatar": avatar, "name": name, "timestamp": timestamp, "rating": rating, "text": text]
         
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[avatar(40)]-[rating]-[text]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDict))
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[name]-[rating(20)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDict))
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[timestamp]-[rating]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDict))
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[avatar(40)]-16-[name]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDict))
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[timestamp]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDict))
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[rating]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDict))
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[text]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDict))
         
@@ -72,5 +85,11 @@ class ReviewsCell: UICollectionViewCell {
     func populate(review: Review) {
         rating.rating = review.rating
         text.text = review.text
+        
+        let date: Date = review.timestamp.dateValue()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        timestamp.text = dateFormatter.string(from: date)
     }
 }

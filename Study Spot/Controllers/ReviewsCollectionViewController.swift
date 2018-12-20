@@ -15,7 +15,7 @@ class ReviewsCollectionViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let dataSourceAndDelegate = ReviewsCollectionDelegateAndDataSource()
+    let dataSourceAndDelegate = ReviewsDelegateAndDataSource()
     var docRef: DocumentReference!
     
     override func viewDidLoad() {

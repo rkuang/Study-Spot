@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 private let reviewsReuseId = "reviewsCell"
 
-class ReviewsCollectionDelegateAndDataSource: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ReviewsDelegateAndDataSource: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var reviews: [Review]
     var db: Firestore
@@ -67,8 +67,10 @@ class ReviewsCollectionDelegateAndDataSource: NSObject, UICollectionViewDelegate
         return 16
     }
     
+    // MARK: - Firestore
+    
     func retrieveReviews(docRef: DocumentReference, _ callback: @escaping () -> Void) {
-        let reviewsCollection = self.db.reviews(docRef: docRef).limit(to: self.limit)
+        let reviewsCollection = self.db.reviews(docRef: docRef).order(by: "timestamp", descending: true).limit(to: self.limit)
         reviewsCollection.getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")

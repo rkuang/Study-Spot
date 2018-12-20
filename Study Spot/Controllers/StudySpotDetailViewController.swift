@@ -63,7 +63,7 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var reviewsCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var headerImage: UIImageView!
     
-    let reviewsDataSourceAndDelegate = ReviewsCollectionDelegateAndDataSource(limit: 3)
+    let reviewsDataSourceAndDelegate = ReviewsDelegateAndDataSource(limit: 3)
     let offeringsDataSourceAndDelegate = OfferingsCollectionDelegateAndDataSource()
     
     func setupCollectionViews() {
@@ -84,18 +84,14 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
         reviewsCollectionView.delegate = reviewsDataSourceAndDelegate
         reviewsCollectionView.dataSource = reviewsDataSourceAndDelegate
         reviewsDataSourceAndDelegate.retrieveReviews(docRef: self.docRef) {
-            self.reloadData(collectionView: self.reviewsCollectionView, height: self.reviewsCollectionViewHeight)
+            self.reviewsCollectionView.reloadData()
+            self.reviewsCollectionViewHeight.constant = self.reviewsCollectionView.collectionViewLayout.collectionViewContentSize.height
+            self.view.setNeedsLayout()
         }
         reviewsCollectionViewHeight.constant = reviewsCollectionView.collectionViewLayout.collectionViewContentSize.height
     }
     
-    func reloadData(collectionView: UICollectionView, height: NSLayoutConstraint) {
-        collectionView.reloadData()
-        height.constant = collectionView.collectionViewLayout.collectionViewContentSize.height
-        self.view.setNeedsLayout()
-    }
-    
-    // MARK: UIScrollViewDelegate
+    // MARK: - UIScrollViewDelegate
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y =  scrollView.contentOffset.y
@@ -103,6 +99,8 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
             headerImage.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: 240 - y)
         }
     }
+    
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -112,8 +110,7 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
         case "newReviewSegue":
             let vc = segue.destination as! NewReviewViewController
             vc.titleLabelText = self.spot.name
-            print(self.spot.name)
-            
+            vc.docRef = self.docRef
         default:
             break
         }
@@ -121,5 +118,9 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
             let vc = segue.destination as! ReviewsCollectionViewController
             vc.docRef = self.docRef
         }
+    }
+    
+    @IBAction func unwindToStudySpotDetailViewController(segue: UIStoryboardSegue) {
+        print("unwinding")
     }
 }

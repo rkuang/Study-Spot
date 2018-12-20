@@ -45,7 +45,7 @@
                                                                 <rect key="frame" x="0.0" y="5" width="145" height="25"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="25" id="fQR-Ri-1um"/>
+                                                                    <constraint firstAttribute="height" constant="25" id="zke-qI-nJz"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
@@ -354,6 +354,9 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0nq-Xg-G83" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="16" y="135" width="261" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="0XT-RG-SVE"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -480,6 +483,7 @@
                             <constraint firstItem="RuG-CR-Ha8" firstAttribute="trailing" secondItem="6vu-Cg-iPh" secondAttribute="trailing" id="NPv-Ib-gYM"/>
                             <constraint firstItem="6vu-Cg-iPh" firstAttribute="leading" secondItem="UaH-43-bcs" secondAttribute="leading" constant="16" id="Qhw-cs-hLc"/>
                             <constraint firstItem="RuG-CR-Ha8" firstAttribute="top" secondItem="6vu-Cg-iPh" secondAttribute="top" id="VpM-Ry-xOP"/>
+                            <constraint firstItem="UaH-43-bcs" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0nq-Xg-G83" secondAttribute="trailing" id="nAE-hu-4jQ"/>
                             <constraint firstItem="g0l-JH-sNJ" firstAttribute="top" secondItem="0nq-Xg-G83" secondAttribute="bottom" constant="16" id="nBV-Iz-Z1x"/>
                             <constraint firstItem="6vu-Cg-iPh" firstAttribute="top" secondItem="g0l-JH-sNJ" secondAttribute="bottom" constant="16" id="o1B-aN-M0M"/>
                             <constraint firstItem="45c-as-Ryv" firstAttribute="top" secondItem="UaH-43-bcs" secondAttribute="top" constant="24" id="uNZ-cM-bIr"/>
@@ -489,14 +493,26 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UaH-43-bcs"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Xee-qO-PUa">
+                        <barButtonItem key="rightBarButtonItem" title="Post Review" id="1Di-m0-BVF">
+                            <connections>
+                                <action selector="postReviewAction:" destination="ayH-pN-H1F" id="onZ-5Y-VEz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="activitySlider" destination="VDG-2K-kTK" id="HfY-o5-hcQ"/>
+                        <outlet property="comfortSlider" destination="zUQ-zK-04q" id="LZ8-Ha-d5E"/>
                         <outlet property="hintLabel" destination="RuG-CR-Ha8" id="9rm-ce-nVs"/>
+                        <outlet property="noiseSlider" destination="I7J-af-INk" id="MZe-6m-Rxz"/>
                         <outlet property="ratingSlider" destination="0nq-Xg-G83" id="OPK-w0-pDj"/>
                         <outlet property="textView" destination="6vu-Cg-iPh" id="Zu5-V7-GqQ"/>
                         <outlet property="titleLabel" destination="45c-as-Ryv" id="x2b-ND-BIq"/>
+                        <segue destination="iIC-DC-Whr" kind="unwind" identifier="unwindToStudySpotDetail" unwindAction="unwindToStudySpotDetailViewControllerWithSegue:" id="5tv-6Q-vec"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yFv-P6-Q7C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="iIC-DC-Whr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1808.8" y="415.14242878560725"/>
         </scene>
