@@ -15,17 +15,26 @@ exports.onCreateReview = functions.firestore
 .document('spots/{spotId}/reviews/{reviewId}')
 .onCreate(
     (snapshot, _) => {
-        const reviewsRef = snapshot.ref.parent
-        const spotRef = reviewsRef.parent
+        const review_rating = snapshot.data().rating
+        const reviews_collection = snapshot.ref.parent
+        const spot = reviews_collection.parent
 
-        const db = spotRef.firestore
+        const db = spot.firestore
 
         return db.runTransaction(t => {
-            return t.get(spotRef)
+            return t.get(spot)
             .then(snap => {
-                var current = snap.data().num_reviews
-                console.log(current)
-                t.update(spotRef, {num_reviews: current + 1})
+                const data = snap.data()
+
+                const num_reviews = data.num_reviews
+                const new_num_reviews = num_reviews + 1
+
+                const rating = data.rating
+                const total_rating = rating * num_reviews
+                const new_rating = (total_rating + review_rating) / new_num_reviews
+
+                t.update(spot, {num_reviews: new_num_reviews,
+                                rating: new_rating})
                 return null
             });
         });
