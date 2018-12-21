@@ -78,13 +78,14 @@ class NewReviewViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func postReviewAction(_ sender: Any) {
         let dictionary: [String: Any] = [
-            "timestamp": Timestamp(),
+            "text": self.textView.text!,
             "rating": self.ratingSlider.rating,
-            "noise": self.noiseSlider.value,
-            "activity": self.activitySlider.value,
-            "comfort": self.comfortSlider.value,
-            "text": self.textView.text!
+            "timestamp": Timestamp(),
+            "noise": Double(self.noiseSlider.value),
+            "activity": Double(self.activitySlider.value),
+            "comfort": Double(self.comfortSlider.value)
         ]
+        print(dictionary)
         if let review = Review(dictionary: dictionary) {
             self.docRef.collection("reviews").addDocument(data: review.dictionary) { (err) in
                 if let err = err {
