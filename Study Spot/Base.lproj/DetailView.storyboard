@@ -494,9 +494,9 @@
                         <viewLayoutGuide key="safeArea" id="UaH-43-bcs"/>
                     </view>
                     <navigationItem key="navigationItem" id="Xee-qO-PUa">
-                        <barButtonItem key="rightBarButtonItem" title="Post Review" id="1Di-m0-BVF">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Post Review" id="1Di-m0-BVF">
                             <connections>
-                                <action selector="postReviewAction:" destination="ayH-pN-H1F" id="onZ-5Y-VEz"/>
+                                <action selector="postReviewAction:" destination="ayH-pN-H1F" id="mH0-hP-goP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

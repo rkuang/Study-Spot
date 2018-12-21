@@ -21,10 +21,15 @@ class ReviewsCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let uiBusy = UIActivityIndicatorView(style: .gray)
+        uiBusy.startAnimating()
+        collectionView.backgroundView = uiBusy
+        
         collectionView.delegate = dataSourceAndDelegate
         collectionView.dataSource = dataSourceAndDelegate
         dataSourceAndDelegate.retrieveReviews(docRef: self.docRef) {
             self.collectionView.reloadData()
+            (self.collectionView.backgroundView as! UIActivityIndicatorView).stopAnimating()
         }
     }
 }

@@ -61,7 +61,7 @@ class NewReviewViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        if textView.text.count > 0 {
+        if !textView.text.isEmpty {
             hintLabel.isHidden = true
         } else {
             hintLabel.isHidden = false
@@ -77,6 +77,10 @@ class NewReviewViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func postReviewAction(_ sender: Any) {
+        if self.textView.text.isEmpty || self.ratingSlider.rating == 0 {
+            print("required fields not filled")
+            return
+        }
         let dictionary: [String: Any] = [
             "text": self.textView.text!,
             "rating": self.ratingSlider.rating,
@@ -85,7 +89,9 @@ class NewReviewViewController: UIViewController, UITextViewDelegate {
             "activity": Double(self.activitySlider.value),
             "comfort": Double(self.comfortSlider.value)
         ]
-        print(dictionary)
+        let uiBusy = UIActivityIndicatorView()
+        uiBusy.startAnimating()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: uiBusy)
         if let review = Review(dictionary: dictionary) {
             self.docRef.collection("reviews").addDocument(data: review.dictionary) { (err) in
                 if let err = err {

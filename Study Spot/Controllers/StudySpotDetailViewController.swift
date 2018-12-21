@@ -83,12 +83,16 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
     func setupReviewsCollectionView() {
         reviewsCollectionView.delegate = reviewsDataSourceAndDelegate
         reviewsCollectionView.dataSource = reviewsDataSourceAndDelegate
+        retrieveReviews()
+        reviewsCollectionViewHeight.constant = reviewsCollectionView.collectionViewLayout.collectionViewContentSize.height
+    }
+    
+    func retrieveReviews() {
         reviewsDataSourceAndDelegate.retrieveReviews(docRef: self.docRef) {
             self.reviewsCollectionView.reloadData()
             self.reviewsCollectionViewHeight.constant = self.reviewsCollectionView.collectionViewLayout.collectionViewContentSize.height
             self.view.setNeedsLayout()
         }
-        reviewsCollectionViewHeight.constant = reviewsCollectionView.collectionViewLayout.collectionViewContentSize.height
     }
     
     // MARK: - UIScrollViewDelegate
@@ -122,5 +126,6 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func unwindToStudySpotDetailViewController(segue: UIStoryboardSegue) {
         print("unwinding")
+        retrieveReviews()
     }
 }

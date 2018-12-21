@@ -75,13 +75,15 @@ class ReviewsDelegateAndDataSource: NSObject, UICollectionViewDelegate, UICollec
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
+                var tmp = [Review]()
                 for document in querySnapshot!.documents {
                     if let model = Review(dictionary: document.data()) {
-                        self.reviews.append(model)
+                        tmp.append(model)
                     } else {
                         fatalError("Could not deserialize Review")
                     }
                 }
+                self.reviews = tmp
                 callback()
             }
         }
