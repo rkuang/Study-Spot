@@ -39,6 +39,13 @@ class NewReviewViewController: UIViewController, UITextViewDelegate {
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         textView.textContainer.lineFragmentPadding = 0
         textView.addDoneButtonOnKeyboard()
+        
+        ratingSlider.didFinishTouchingCosmos = { rating in
+            if rating != 0 {
+                self.containsRating = true
+            }
+            self.checkRequiredFields()
+        }
     }
     
     // MARK: - UITextViewDelegate
@@ -60,11 +67,26 @@ class NewReviewViewController: UIViewController, UITextViewDelegate {
         }, completion: nil)
     }
     
+    var containsText = false
+    var containsRating = false
+    
     func textViewDidChange(_ textView: UITextView) {
         if !textView.text.isEmpty {
             hintLabel.isHidden = true
+            containsText = true
         } else {
             hintLabel.isHidden = false
+            containsText = false
+        }
+        checkRequiredFields()
+    }
+    
+    @IBOutlet weak var postReviewButton: UIBarButtonItem!
+    func checkRequiredFields() {
+        if containsText && containsRating {
+            postReviewButton.isEnabled = true
+        } else {
+            postReviewButton.isEnabled = false
         }
     }
     
@@ -77,10 +99,6 @@ class NewReviewViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func postReviewAction(_ sender: Any) {
-        if self.textView.text.isEmpty || self.ratingSlider.rating == 0 {
-            print("required fields not filled")
-            return
-        }
         let dictionary: [String: Any] = [
             "text": self.textView.text!,
             "rating": self.ratingSlider.rating,

@@ -41,7 +41,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xSc-U2-1fY">
                                                         <rect key="frame" x="0.0" y="47" width="343" height="35"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyF-wa-m9J" customClass="CosmosView" customModule="Cosmos">
+                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gyF-wa-m9J" customClass="CosmosView" customModule="Cosmos">
                                                                 <rect key="frame" x="0.0" y="5" width="145" height="25"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
@@ -505,6 +505,7 @@
                         <outlet property="comfortSlider" destination="zUQ-zK-04q" id="LZ8-Ha-d5E"/>
                         <outlet property="hintLabel" destination="RuG-CR-Ha8" id="9rm-ce-nVs"/>
                         <outlet property="noiseSlider" destination="I7J-af-INk" id="MZe-6m-Rxz"/>
+                        <outlet property="postReviewButton" destination="1Di-m0-BVF" id="8fL-yu-HfH"/>
                         <outlet property="ratingSlider" destination="0nq-Xg-G83" id="OPK-w0-pDj"/>
                         <outlet property="textView" destination="6vu-Cg-iPh" id="Zu5-V7-GqQ"/>
                         <outlet property="titleLabel" destination="45c-as-Ryv" id="x2b-ND-BIq"/>
