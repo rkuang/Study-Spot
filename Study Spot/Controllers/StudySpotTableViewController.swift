@@ -17,13 +17,16 @@ class StudySpotTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.backgroundView = nil
         tableView.backgroundColor = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1)
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        
         db = Firestore.firestore()
-        retrieveStudySpots {
-            self.tableView.reloadData()
-        }
+        retrieveStudySpots()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,23 +48,32 @@ class StudySpotTableViewController: UITableViewController {
         }
     }
     
-    func retrieveStudySpots(_ callback: @escaping () -> Void) {
+    func retrieveStudySpots() {
         self.db.studySpots.getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
+                var tmp_spots = [StudySpot]()
+                var tmp_docs = [DocumentReference]()
                 for document in querySnapshot!.documents {
                     if let model = StudySpot(dictionary: document.data()) {
                         // Add model to data source
-                        self.studySpots.append(model)
-                        self.docRefs.append(document.reference)
+                        tmp_spots.append(model)
+                        tmp_docs.append(document.reference)
                     } else {
                         fatalError("Failed to create StudySpot object")
                     }
                 }
-                callback()
+                self.studySpots = tmp_spots
+                self.docRefs = tmp_docs
+                self.tableView.reloadData()
             }
         }
+    }
+    
+    @objc func refreshTableView() {
+        retrieveStudySpots()
+        refreshControl?.endRefreshing()
     }
 }
 
