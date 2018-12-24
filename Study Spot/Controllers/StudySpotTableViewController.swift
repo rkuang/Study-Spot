@@ -72,8 +72,10 @@ class StudySpotTableViewController: UITableViewController {
     }
     
     @objc func refreshTableView() {
-        retrieveStudySpots()
-        refreshControl?.endRefreshing()
+        DispatchQueue.main.async {
+            self.retrieveStudySpots()
+            self.refreshControl?.endRefreshing()
+        }
     }
 }
 
