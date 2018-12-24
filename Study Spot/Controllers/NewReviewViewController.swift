@@ -103,9 +103,11 @@ class NewReviewViewController: UIViewController, UITextViewDelegate {
             "text": self.textView.text!,
             "rating": self.ratingSlider.rating,
             "timestamp": Timestamp(),
-            "noise": Double(self.noiseSlider.value),
-            "activity": Double(self.activitySlider.value),
-            "comfort": Double(self.comfortSlider.value)
+            "environment": [
+                "noise": Double(self.noiseSlider.value),
+                "activity": Double(self.activitySlider.value),
+                "comfort": Double(self.comfortSlider.value)
+            ]
         ]
         let uiBusy = UIActivityIndicatorView()
         uiBusy.startAnimating()

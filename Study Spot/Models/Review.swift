@@ -12,18 +12,14 @@ struct Review {
     var rating: Double
     var text: String
     var timestamp: Timestamp
-    var noise: Double
-    var activity: Double
-    var comfort: Double
+    var environment: [String: Double]
     
     var dictionary: [String: Any] {
         return [
             "rating": rating,
             "text": text,
             "timestamp": timestamp,
-            "noise": noise,
-            "activity": activity,
-            "comfort": comfort
+            "environment": environment
         ]
     }
 }
@@ -33,13 +29,11 @@ extension Review {
         guard let rating = dictionary["rating"] as? Double,
             let text = dictionary["text"] as? String,
             let timestamp = dictionary["timestamp"] as? Timestamp,
-            let noise = dictionary["noise"] as? Double,
-            let activity = dictionary["activity"] as? Double,
-            let comfort = dictionary["comfort"] as? Double
+            let environment = dictionary["environment"] as? [String: Double]
         else {
             print("Review could not be instantiated")
             return nil
         }
-        self.init(rating: rating, text: text, timestamp: timestamp, noise: noise, activity: activity, comfort: comfort)
+        self.init(rating: rating, text: text, timestamp: timestamp, environment: environment)
     }
 }

@@ -28,12 +28,33 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
     
     var spot: StudySpot!
     var docRef: DocumentReference!
+    var listener: ListenerRegistration!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionViews()
         setupViews()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        listener = docRef.addSnapshotListener { (snapshot, error) in
+            if let error = error {
+                print("There was an error: \(error)")
+            } else {
+                if let model = StudySpot(dictionary: snapshot!.data()!) {
+                    self.populateView(with: model)
+                } else {
+                    print("Could not instantiate StudySpot on data changed")
+                }
+            }
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        listener.remove()
+    }
+    
+    // TODO: deallocate listener
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var rating: CosmosView!
@@ -42,6 +63,12 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var comfortSlider: CustomSlider!
     
     func setupViews() {
+        noiseSlider.clearThumbImage()
+        activitySlider.clearThumbImage()
+        comfortSlider.clearThumbImage()
+    }
+    
+    func populateView(with spot: StudySpot) {
         self.title = spot.name
         
         name.text = spot.name
@@ -50,10 +77,6 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
         noiseSlider.value = Float(spot.environment["noise"] ?? 0)
         activitySlider.value = Float(spot.environment["activity"] ?? 0)
         comfortSlider.value = Float(spot.environment["comfort"] ?? 0)
-        
-        noiseSlider.clearThumbImage()
-        activitySlider.clearThumbImage()
-        comfortSlider.clearThumbImage()
     }
     
     @IBOutlet weak var offeringsCollectionView: UICollectionView!
