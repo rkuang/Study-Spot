@@ -28,30 +28,11 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
     
     var spot: StudySpot!
     var docRef: DocumentReference!
-    var listener: ListenerRegistration!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionViews()
         setupViews()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        listener = docRef.addSnapshotListener { (snapshot, error) in
-            if let error = error {
-                print("There was an error: \(error)")
-            } else {
-                if let model = StudySpot(dictionary: snapshot!.data()!) {
-                    self.populateView(with: model)
-                } else {
-                    print("Could not instantiate StudySpot on data changed")
-                }
-            }
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        listener.remove()
     }
     
     // TODO: deallocate listener
@@ -61,11 +42,20 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var noiseSlider: CustomSlider!
     @IBOutlet weak var activitySlider: CustomSlider!
     @IBOutlet weak var comfortSlider: CustomSlider!
+    @IBOutlet weak var scrollView: UIScrollView!
+    var refreshControl: UIRefreshControl!
     
     func setupViews() {
+        populateView(with: spot)
+        
         noiseSlider.clearThumbImage()
         activitySlider.clearThumbImage()
         comfortSlider.clearThumbImage()
+        
+        scrollView.delegate = self
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshStudySpot), for: .valueChanged)
+        scrollView.refreshControl = refreshControl
     }
     
     func populateView(with spot: StudySpot) {
@@ -118,6 +108,30 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    @objc func refreshStudySpot() {
+        DispatchQueue.main.async {
+            self.retrieveStudySpot()
+            self.populateView(with: self.spot)
+            self.retrieveReviews()
+            self.refreshControl.endRefreshing()
+        }
+    }
+    
+    func retrieveStudySpot() {
+        docRef.getDocument { (snapshot, err) in
+            if let err = err {
+                print("Error: \(err)")
+            } else {
+                if let model = StudySpot(dictionary: snapshot!.data()!) {
+                    print(model)
+                    self.spot = model
+                } else {
+                    fatalError("Failed to create StudySpot")
+                }
+            }
+        }
+    }
+    
     // MARK: - UIScrollViewDelegate
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -149,6 +163,6 @@ class StudySpotDetailViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func unwindToStudySpotDetailViewController(segue: UIStoryboardSegue) {
         print("unwinding")
-        retrieveReviews()
+        refreshStudySpot()
     }
 }

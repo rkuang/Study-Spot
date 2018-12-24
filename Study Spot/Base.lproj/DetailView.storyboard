@@ -306,9 +306,6 @@
                                     <constraint firstAttribute="trailing" secondItem="IE6-tn-tz6" secondAttribute="trailing" id="JeB-dY-5gP"/>
                                     <constraint firstItem="IE6-tn-tz6" firstAttribute="top" secondItem="xmE-pc-jrv" secondAttribute="top" id="uWA-MG-VDQ"/>
                                 </constraints>
-                                <connections>
-                                    <outlet property="delegate" destination="YHv-LF-SoD" id="A0f-J7-nuB"/>
-                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -335,6 +332,7 @@
                         <outlet property="rating" destination="gyF-wa-m9J" id="c1W-1y-xZx"/>
                         <outlet property="reviewsCollectionView" destination="u3p-wX-bzr" id="pqh-2w-yjl"/>
                         <outlet property="reviewsCollectionViewHeight" destination="C5k-qE-ddH" id="a8J-nl-dUS"/>
+                        <outlet property="scrollView" destination="xmE-pc-jrv" id="QYs-tT-yJo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcY-7t-wDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
